@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/SEGUN/customer-conversion/mlruns/0/9eb49515dbac45e0ab41e5993ae2da75/artifacts
+end_time: 1749917736535
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 9eb49515dbac45e0ab41e5993ae2da75
+run_name: SVM
+run_uuid: 9eb49515dbac45e0ab41e5993ae2da75
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1749917727944
+status: 3
+tags: []
+user_id: SEGUN

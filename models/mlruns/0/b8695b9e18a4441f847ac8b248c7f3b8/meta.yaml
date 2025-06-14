@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/SEGUN/customer-conversion/models/mlruns/0/b8695b9e18a4441f847ac8b248c7f3b8/artifacts
+end_time: 1749399647484
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: b8695b9e18a4441f847ac8b248c7f3b8
+run_name: DecisionTree
+run_uuid: b8695b9e18a4441f847ac8b248c7f3b8
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1749399641281
+status: 3
+tags: []
+user_id: SEGUN

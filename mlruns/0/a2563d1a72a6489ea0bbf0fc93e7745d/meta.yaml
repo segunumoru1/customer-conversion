@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/SEGUN/customer-conversion/mlruns/0/a2563d1a72a6489ea0bbf0fc93e7745d/artifacts
+end_time: 1749917719540
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: a2563d1a72a6489ea0bbf0fc93e7745d
+run_name: RandomForest
+run_uuid: a2563d1a72a6489ea0bbf0fc93e7745d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1749917702803
+status: 3
+tags: []
+user_id: SEGUN

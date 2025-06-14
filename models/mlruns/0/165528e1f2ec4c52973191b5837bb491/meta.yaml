@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/SEGUN/customer-conversion/models/mlruns/0/165528e1f2ec4c52973191b5837bb491/artifacts
+end_time: 1749401733392
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 165528e1f2ec4c52973191b5837bb491
+run_name: clumsy-mole-816
+run_uuid: 165528e1f2ec4c52973191b5837bb491
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1749401722463
+status: 3
+tags: []
+user_id: SEGUN

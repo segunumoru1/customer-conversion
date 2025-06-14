@@ -1,0 +1,80 @@
+%% OMNIS Platform Architecture Diagram
+flowchart TD
+    %% ===== DATA LAYER =====
+    subgraph DataLayer["Data Layer"]
+        direction TB
+        DataLake[(("Data Lake\n(AWS S3 / GCP Storage)"))]
+        DataPipeline[["Data Pipeline\n(Airflow / AWS Glue)"]]
+        DataLake -->|Raw Data| DataPipeline
+        DataPipeline -->|Cleaned Data| DataLake
+    end
+
+    %% ===== AI CORE =====
+    subgraph AICore["AI Core"]
+        direction LR
+        MLEngine[["ML Engine\n(TensorFlow/PyTorch)"]]
+        NLP[["NLP Module\n(SpaCy/Transformers)"]]
+        MultiLLM[["Multi-LLM System\n(Grok/LLaMA)"]]
+        RAG[["RAG System\n(Pinecone/FAISS)"]]
+        
+        MLEngine -->|Predictions| RAG
+        NLP -->|Text Processing| MultiLLM
+        RAG -->|Context Data| MultiLLM
+    end
+
+    %% ===== ENGAGEMENT LAYER =====
+    subgraph Engagement["Engagement Layer"]
+        direction TB
+        RecEngine[["Recommendation Engine\n(Collab/Content Filtering)"]]
+        Frontend["Interactive Frontend\n(React + Tailwind)"]
+        Agentic[["Agentic Support\n(Rasa/Dialogflow)"]]
+        
+        RecEngine -->|Personalized Offers| Frontend
+        Agentic -->|AI Assistance| Frontend
+    end
+
+    %% ===== DASHBOARD & ANALYTICS =====
+    subgraph Dashboard["Dashboard & Analytics"]
+        direction LR
+        DashBackend[["Dashboard Backend\n(Django/Flask)"]]
+        Viz[["Visualization\n(Chart.js/D3.js)"]]
+        Tracking[["Tracking Module"]]
+        
+        DashBackend -->|API Data| Viz
+        Tracking -->|Metrics| DashBackend
+    end
+
+    %% ===== INTEGRATION & SECURITY =====
+    subgraph Integration["Integration Layer"]
+        APIGateway[["API Gateway\n(FastAPI/Express.js)"]]
+        Sync[["Sync Mechanism\n(Kafka/RabbitMQ)"]]
+    end
+
+    subgraph Security["Security & Compliance"]
+        Encryption[["Encryption\n(AES-256/TLS)"]]
+        Compliance[["Compliance Module\n(GDPR/NDPR)"]]
+    end
+
+    %% ===== EXTERNAL SYSTEMS =====
+    FintechBackend[("Fintech Backend\n(Existing Systems)")]
+    FintechFrontend[("Fintech Frontend\n(User Interface)")]
+    Admin[("Admin Users")]
+
+    %% ===== DATA FLOW =====
+    FintechBackend -->|Upload Data| DataLake
+    DataLake -->|Processed Data| AICore
+    AICore -->|Insights| Engagement
+    Engagement -->|User Actions| FintechFrontend
+    APIGateway <-->|Sync Data| Sync
+    Sync <--> FintechBackend
+    APIGateway <--> Dashboard
+    Dashboard -->|Reports| Admin
+    Encryption -->|Secures| DataLayer
+    Compliance -->|Audits| All[("All Components")]
+
+    %% ===== KEY CONNECTIONS =====
+    AICore -->|AI Output| RecEngine
+    DataLayer -->|Training Data| MLEngine
+    APIGateway -->|APIs| Engagement
+    APIGateway -->|APIs| Dashboard
+    FintechFrontend -->|Queries| Agentic
