@@ -3,27 +3,19 @@ import numpy as np
 import joblib
 import os
 
-# Load the trained model
-model_path = "..\\artifacts\\customer_conversion_model.pkl"
-scaler_path = "..\\artifacts\\scaler.pkl"
+MODEL_PATH = "artifacts/customer_conversion_model.pkl"
+SCALER_PATH = "artifacts/scaler.pkl"
 
 @st.cache_resource(show_spinner=False)
 def load_model_and_scaler():
-    try:
-        model = joblib.load(model_path)
-    except Exception as e:
-        st.error(f"Error loading model: {e}")
-        model = None
-    scaler = joblib.load(scaler_path) if os.path.exists(scaler_path) else None
+    model = joblib.load(MODEL_PATH)
+    scaler = joblib.load(SCALER_PATH)
     return model, scaler
 
 model, scaler = load_model_and_scaler()
 
 def make_prediction(input_data):
-    if model is None:
-        return None, None
-    if scaler:
-        input_data = scaler.transform(input_data)
+    input_data = scaler.transform(input_data)
     prediction = model.predict(input_data)
     probability = model.predict_proba(input_data)[0][1]
     return prediction[0], probability
@@ -54,12 +46,10 @@ if page == "Model Predictions":
         st.markdown("---")
         input_data = np.array([[ads_clicks, time_on_site, pages_visited]])
         prediction, probability = make_prediction(input_data)
-        if model is None or prediction is None:
-            st.error("Prediction could not be made because the model is not loaded.")
-        elif prediction == 1:
-            st.success(f"The customer is likely to convert! (Probability: {probability:.2f})")
+        if prediction == 1:
+            st.success(f"Likely to convert! (Probability: {probability:.2f})")
         else:
-            st.error(f"The customer is unlikely to convert. (Probability: {probability:.2f})")
+            st.error(f"Unlikely to convert. (Probability: {probability:.2f})")
     st.markdown("---")
     st.write("#### Sample Input Guide")
     st.info("Typical values: Ads Clicks (0-10), Time on Site (0-60 min), Pages Visited (1-20)")

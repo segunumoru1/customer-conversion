@@ -10,7 +10,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import confusion_matrix, roc_auc_score, roc_curve
 from sklearn.metrics import classification_report, accuracy_score
 import mlflow
-import mlflow.sklearn
+from mlflow import sklearn
 from mlflow.models.signature import infer_signature
 import joblib
 import matplotlib.pyplot as plt
